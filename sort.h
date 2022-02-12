@@ -43,5 +43,5 @@ void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 
 /* Functions Added */
-void sort(int *half1, int *half2, int *array);
+void merge(int *half1, int *half2, int *array);
 #endif
