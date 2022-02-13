@@ -8,9 +8,13 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head = *list;
+	listint_t *head = NULL;
 	listint_t *tmp1 = NULL, *tmp2 = NULL, *A = NULL, *B = NULL;
 
+	if (!list || !(*list) || !((*list)->next))
+		return;
+
+	head = *list;
 	while (head)
 	{
 		tmp1 = head;
@@ -37,5 +41,4 @@ void insertion_sort_list(listint_t **list)
 		}
 		head = tmp2;
 	}
-
 }
