@@ -27,25 +27,26 @@ void merge_sort(int *array, size_t size)
 	merge_sort(half1, lleft);
 	merge_sort(half2, lright);
 
-	merge(half1, half2, array);
+	merge(half1, half2, lleft, lright, array);
+	free(half1);
+	free(half2);
 }
 /**
  * merge - I will sort the elements of halves
  * and join them in the array
  * @half1: Left half to sort
  * @half2: Right half to sort
+ * @len1: Length of the half1
+ * @len2: Length of the half2
  * @arr: Array in which the halves will be joined
  *
  * Return: Nothing
  */
-void merge(int *half1, int *half2, int *arr)
+void merge(int *half1, int *half2, int len1, int len2, int *arr)
 {
 	int i1 = 0, i2 = 0, i3 = 0;
-	int len1 = 0, len2 = 0;
 	int value1 = 0, value2 = 0;
 
-	len1 = len(half1);
-	len2 = len(half2);
 	while (i1 < len1 && i2 < len2)
 	{
 		value1 = half1[i1];
@@ -84,6 +85,8 @@ void merge(int *half1, int *half2, int *arr)
  * @half2: Right half
  * @len1: Length of the half1
  * @len2: Length of the half2
+ *
+ * Return: Nothing
  */
 void show(int *arr, int *half1, int *half2, int len1, int len2)
 {
@@ -96,21 +99,6 @@ void show(int *arr, int *half1, int *half2, int len1, int len2)
 	print_array(arr, len1 + len2);
 }
 /**
- * len - Function that calculate the length of an array
- * @list: structure(array)
- *
- * Return: length of the array
- */
-size_t len(int *list)
-{
-	size_t i = 0;
-
-	while (*(list + i))
-		i++;
-
-	return (i);
-}
-/**
  * memory - Reservation memory
  * @size: Space in memory
  *
@@ -118,5 +106,5 @@ size_t len(int *list)
  */
 int *memory(size_t size)
 {
-	return (malloc(sizeof(int) * size));
+	return (calloc(size, sizeof(int)));
 }
