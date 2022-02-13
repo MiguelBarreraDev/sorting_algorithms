@@ -11,7 +11,7 @@ void merge_sort(int *array, size_t size)
 	size_t lleft = 0, lright = 0, i = 0;
 	int *half1 = NULL, *half2 = NULL;
 
-	if (size <= 1)
+	if (!array || size <= 1)
 		return;
 
 	lleft = size / 2;
