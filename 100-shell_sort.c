@@ -29,7 +29,7 @@ void shell_sort(int *array, size_t size)
 					tmp = array[j];
 					array[j] = array[j + n];
 					array[j + n] = tmp;
-					sort_reverse(array, (int)j, (int)n);
+					sort_reverse(array, (int)i, (int)j, (int)n);
 				}
 				j += n;
 			}
@@ -49,11 +49,11 @@ void shell_sort(int *array, size_t size)
  *
  * Return: Nothing
  */
-void sort_reverse(int *array, int j, int n)
+void sort_reverse(int *array, int i, int j, int n)
 {
 	int tmp = 0;
 
-	while ((j - n) > 0)
+	while ((j - n) >= i)
 	{
 		if (array[j - n] > array[j])
 		{
