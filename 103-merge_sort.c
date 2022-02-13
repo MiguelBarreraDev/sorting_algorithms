@@ -28,6 +28,8 @@ void merge_sort(int *array, size_t size)
 	merge_sort(half2, lright);
 
 	merge(half1, half2, lleft, lright, array);
+	free(half1);
+	free(half2);
 }
 /**
  * merge - I will sort the elements of halves
@@ -88,7 +90,7 @@ void merge(int *half1, int *half2, int len1, int len2, int *arr)
  */
 void show(int *arr, int *half1, int *half2, int len1, int len2)
 {
-	printf("Mergin...\n");
+	printf("Merging...\n");
 	printf("[left]: ");
 	print_array(half1, len1);
 	printf("[right]: ");
