@@ -28,8 +28,6 @@ void merge_sort(int *array, size_t size)
 	merge_sort(half2, lright);
 
 	merge(half1, half2, lleft, lright, array);
-	free(half1);
-	free(half2);
 }
 /**
  * merge - I will sort the elements of halves
@@ -106,5 +104,5 @@ void show(int *arr, int *half1, int *half2, int len1, int len2)
  */
 int *memory(size_t size)
 {
-	return (calloc(size, sizeof(int)));
+	return (malloc(sizeof(int) * size));
 }
