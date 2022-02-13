@@ -10,7 +10,7 @@ void cocktail_sort_list(listint_t **list)
 {
 	listint_t *head = NULL;
 	listint_t *tmp1 = NULL, *tmp2 = NULL, *A = NULL, *B = NULL;
-        int ida = 0;
+	int ida = 0;
 
 	if (!list || !(*list) || !((*list)->next))
 		return;
@@ -27,11 +27,11 @@ void cocktail_sort_list(listint_t **list)
 			A = tmp1->prev;
 
 			if(!tmp2->next)
-                        {
-                                /*printf("llegue al final\n");*/
-                                ida = 1;
-                        }
-                        tmp1->next = B;
+			{
+				/*printf("llegue al final\n");*/
+				ida = 1;
+			}
+			tmp1->next = B;
 			if (B)
 				B->prev = tmp1;
 			tmp1->prev = tmp2;
@@ -42,20 +42,20 @@ void cocktail_sort_list(listint_t **list)
 			else
 				*list = tmp2;
 			tmp2->next = tmp1;
-                        
-                        if(ida == 0)
+			
+			if(ida == 0)
 			{
-                                /*printf("ida 0\n");*/
-                                tmp2 = B;
-                        }
-                        if(ida == 1)
-                        {        
-                                /*printf("ida 1\n");*/
-                                tmp1 = A;
-                        }
+				/*printf("ida 0\n");*/
+				tmp2 = B;
+			}
+			if(ida == 1)
+			{        
+				/*printf("ida 1\n");*/
+				tmp1 = A;
+			}
 			print_list(*list);
 		}
 		head = tmp2;
-                
+		
 	}
 }
