@@ -1,7 +1,4 @@
 #include "sort.h"
-
-size_t len(int *list);
-
 /**
  * merge_sort - Divide and conquer algorithm(bottom-up)
  * @array: Pointing to array to sort
@@ -20,10 +17,10 @@ void merge_sort(int *array, size_t size)
 	lleft = size / 2;
 	lright = (size % 2) ? (size + 1) / 2 : size / 2;
 
-	half1 = calloc(lleft, sizeof(int));
+	half1 = memory(lleft);
 	for (i = 0; i < lleft; i++)
 		*(half1 + i) = *(array + i);
-	half2 = calloc(lright, sizeof(int));
+	half2 = memory(lright);
 	for (i = 0; i < lright; i++)
 		*(half2 + i) = *(array + i + lleft);
 
@@ -31,8 +28,6 @@ void merge_sort(int *array, size_t size)
 	merge_sort(half2, lright);
 
 	merge(half1, half2, array);
-	free(half1);
-	free(half2);
 }
 /**
  * merge - I will sort the elements of halves
@@ -51,7 +46,6 @@ void merge(int *half1, int *half2, int *arr)
 
 	len1 = len(half1);
 	len2 = len(half2);
-
 	while (i1 < len1 && i2 < len2)
 	{
 		value1 = half1[i1];
@@ -69,20 +63,30 @@ void merge(int *half1, int *half2, int *arr)
 			i2++;
 		}
 	}
-
 	while (i1 < len1)
 	{
 		arr[i3] = half1[i1];
 		i3++;
 		i1++;
 	}
-
 	while (i2 < len2)
 	{
 		arr[i3] = half2[i2];
 		i3++;
 		i2++;
 	}
+	show(arr, half1, half2, len1, len2);
+}
+/**
+ * show - Print with format
+ * @arr: Array
+ * @half1: Left half
+ * @half2: Right half
+ * @len1: Length of the half1
+ * @len2: Length of the half2
+ */
+void show(int *arr, int *half1, int *half2, int len1, int len2)
+{
 	printf("Mergin...\n");
 	printf("[left]: ");
 	print_array(half1, len1);
@@ -105,4 +109,14 @@ size_t len(int *list)
 		i++;
 
 	return (i);
+}
+/**
+ * memory - Reservation memory
+ * @size: Space in memory
+ *
+ * Return: Nothing
+ */
+int *memory(size_t size)
+{
+	return (malloc(sizeof(int) * size));
 }
