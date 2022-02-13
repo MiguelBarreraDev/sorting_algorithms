@@ -48,5 +48,6 @@ size_t partition(int *array, int start, int end, size_t size);
 void merge(int *half1, int *half2, int len1, int len2, int *arr);
 int *memory(size_t size);
 void show(int *arr, int *half1, int *half2, int len1, int len2);
+void sort_reverse(int *array, int j, int n);
 
 #endif
