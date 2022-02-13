@@ -44,6 +44,7 @@ void shell_sort(int *array, size_t size)
 /**
  * sort_reverse - Sort an element in the array
  * @array: structure to sort
+ * @i: lower bound index
  * @j: index of the element to sort
  * @n: Value of the gap between the elements of the array
  *
