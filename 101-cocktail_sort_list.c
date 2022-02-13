@@ -26,36 +26,24 @@ void cocktail_sort_list(listint_t **list)
 			B = tmp2->next;
 			A = tmp1->prev;
 
-			if(!tmp2->next)
-			{
-				/*printf("llegue al final\n");*/
+			if (!tmp2->next)
 				ida = 1;
-			}
 			tmp1->next = B;
 			if (B)
 				B->prev = tmp1;
 			tmp1->prev = tmp2;
-
 			tmp2->prev = A;
 			if (A)
 				A->next = tmp2;
 			else
 				*list = tmp2;
 			tmp2->next = tmp1;
-			
-			if(ida == 0)
-			{
-				/*printf("ida 0\n");*/
+			if (ida == 0)
 				tmp2 = B;
-			}
-			if(ida == 1)
-			{        
-				/*printf("ida 1\n");*/
+			if (ida == 1)
 				tmp1 = A;
-			}
 			print_list(*list);
 		}
 		head = tmp2;
-		
 	}
 }
