@@ -45,8 +45,7 @@ void handle(int *array, int start, int end, size_t size);
 size_t partition(int *array, int start, int end, size_t size);
 
 /* Functions Added */
-void merge(int *half1, int *half2, int *array);
-size_t len(int *list);
+void merge(int *half1, int *half2, int len1, int len2, int *arr);
 int *memory(size_t size);
 void show(int *arr, int *half1, int *half2, int len1, int len2);
 
