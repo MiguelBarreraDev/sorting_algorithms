@@ -10,7 +10,7 @@
  */
 void quick_sort(int *array, size_t size)
 {
-    handle(array, 0, size, size);
+	handle(array, 0, size, size);
 }
 
 /**
@@ -24,16 +24,16 @@ void quick_sort(int *array, size_t size)
  */
 void handle(int *array, int start, int end, size_t size)
 {
-    int index = 0;
+	int index = 0;
 
-    if (end - start <= 1)
-        return;
-    index = partition(array, start, end, size);
+	if (end - start <= 1)
+		return;
+	index = partition(array, start, end, size);
 
-    if (index > start)
-        handle(array, start, index, size);
+	if (index > start)
+		handle(array, start, index, size);
 
-    handle(array, index + 1, end, size);
+	handle(array, index + 1, end, size);
 }
 
 /*Lomuto*/
@@ -48,36 +48,36 @@ void handle(int *array, int start, int end, size_t size)
  */
 size_t partition(int *array, int start, int end, size_t size)
 {
-    int i = start, j = 0, tmp = 0, index_part = 0, save = 0;
-    int pivote = array[end - 1], flag = 0;
+	int i = start, j = 0, tmp = 0, index_part = 0, save = 0;
+	int pivote = array[end - 1], flag = 0;
 
-    for (i = start; i < end; i++)
-    {
-        if (array[i] > pivote)
-        {
-            for (j = i + 1; j < end; j++)
-            {
-                if (j == end - 1)
-                {
-                    flag = -1;
-                    save = i;
-                }
-                if (array[j] <= pivote)
-                {
-                    tmp = array[j];
-                    array[j] = array[i];
-                    array[i] = tmp;
-                    break;
-                }
-            }
-            print_array(array, size);
-            if (flag == -1)
-                break;
-        }
-    }
-    if (flag == 0)
-        return (end - 1);
-    index_part = save;
-    i = start;
-    return (index_part);
+	for (i = start; i < end; i++)
+	{
+		if (array[i] > pivote)
+		{
+			for (j = i + 1; j < end; j++)
+			{
+				if (j == end - 1)
+				{
+					flag = -1;
+					save = i;
+				}
+				if (array[j] <= pivote)
+				{
+					tmp = array[j];
+					array[j] = array[i];
+					array[i] = tmp;
+					break;
+				}
+			}
+			print_array(array, size);
+			if (flag == -1)
+				break;
+		}
+	}
+	if (flag == 0)
+		return (end - 1);
+	index_part = save;
+	i = start;
+	return (index_part);
 }
